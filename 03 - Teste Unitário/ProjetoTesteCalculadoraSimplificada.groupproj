@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{4399917F-8BA1-488E-A110-B4F413A27CD4}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CalculadoraSimplificada.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\CalculadoraSimplificadaTests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CalculadoraSimplificada">
+        <MSBuild Projects="CalculadoraSimplificada.dproj"/>
+    </Target>
+    <Target Name="CalculadoraSimplificada:Clean">
+        <MSBuild Projects="CalculadoraSimplificada.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CalculadoraSimplificada:Make">
+        <MSBuild Projects="CalculadoraSimplificada.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CalculadoraSimplificadaTests">
+        <MSBuild Projects="Test\CalculadoraSimplificadaTests.dproj"/>
+    </Target>
+    <Target Name="CalculadoraSimplificadaTests:Clean">
+        <MSBuild Projects="Test\CalculadoraSimplificadaTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CalculadoraSimplificadaTests:Make">
+        <MSBuild Projects="Test\CalculadoraSimplificadaTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CalculadoraSimplificada;CalculadoraSimplificadaTests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CalculadoraSimplificada:Clean;CalculadoraSimplificadaTests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CalculadoraSimplificada:Make;CalculadoraSimplificadaTests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
